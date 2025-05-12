@@ -16,6 +16,7 @@ import { readStreamableValue } from "ai/rsc";
 import CodeReferences from "./code-references";
 import { api } from "@/trpc/react";
 import { toast } from "sonner";
+import useRefetch from "@/hooks/use-refetch";
 
 const AskQuestionCard = () => {
   const { project } = useProject();
@@ -43,12 +44,14 @@ const AskQuestionCard = () => {
     }
     setLoading(false);
   };
+
+  const refetch = useRefetch();
   return (
     <>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[80vw]">
           <DialogHeader>
-            <div className="iems-center flex gap-2">
+            <div className="flex items-center gap-2">
               <DialogTitle>Git Summarizer</DialogTitle>
               <Button
                 disabled={saveAnswer.isPending}
@@ -64,6 +67,7 @@ const AskQuestionCard = () => {
                     {
                       onSuccess: () => {
                         toast.success("Answer saved!");
+                        refetch();
                       },
                       onError: () => {
                         toast.error("Error saving answer");
