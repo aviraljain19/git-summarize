@@ -8,6 +8,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import CommitLog from "./commit-log";
 import AskQuestionCard from "./ask-question-card";
 import MeetingCard from "./meeting-card";
+import ArchiveButton from "./archive-button";
 
 const DashboardPage = () => {
   const { project } = useProject();
@@ -34,7 +35,7 @@ const DashboardPage = () => {
         </div>
         <div className="h-4"></div>
         <div className="flex items-center gap-4">
-          {/* Team Members inviteButton ArchiveButton */}
+          <ArchiveButton />
         </div>
       </div>
 
