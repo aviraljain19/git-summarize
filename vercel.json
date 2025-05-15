@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "src/app/api/process-meeting.ts": {
-      "maxDuration": 60
-    }
-  }
-}
