@@ -2,13 +2,17 @@
 import useProject from "@/hooks/use-project";
 import { api } from "@/trpc/react";
 import React from "react";
-import MeetingCard from "../dashboard/meeting-card";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { on } from "events";
 import useRefetch from "@/hooks/use-refetch";
 import { toast } from "sonner";
+import dynamic from "next/dynamic";
+
+const MeetingCard = dynamic(() => import("../dashboard/meeting-card"), {
+  ssr: false,
+});
 
 const MeetingsPage = () => {
   const { projectId } = useProject();

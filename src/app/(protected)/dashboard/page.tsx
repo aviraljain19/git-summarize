@@ -6,9 +6,14 @@ import Link from "next/link";
 import React from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import CommitLog from "./commit-log";
-import AskQuestionCard from "./ask-question-card";
-import MeetingCard from "./meeting-card";
+
 import ArchiveButton from "./archive-button";
+import dynamic from "next/dynamic";
+
+const MeetingCard = dynamic(() => import("./meeting-card"), { ssr: false });
+const AskQuestionCard = dynamic(() => import("./ask-question-card"), {
+  ssr: false,
+});
 
 const DashboardPage = () => {
   const { project } = useProject();
